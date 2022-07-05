@@ -8,7 +8,7 @@
 
 <AnchorPane style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.shoppingCart.AppController">
     <children>
-        <AnchorPane fx:id="root" minHeight="600.0" minWidth="600.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+        <AnchorPane fx:id="root" minHeight="800.0" minWidth="600.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
             <children>
                 <BorderPane fx:id="body" styleClass="body" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                     <left>

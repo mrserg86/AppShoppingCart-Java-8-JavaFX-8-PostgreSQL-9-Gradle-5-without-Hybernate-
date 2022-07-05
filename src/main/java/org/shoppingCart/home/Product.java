@@ -1,24 +1,26 @@
 package org.shoppingCart.home;
 
-public enum Product {
+public class Product {
 
-    APPLE("Apple.jpg", 0.55f), MILK("milk.jpg", 0.78f),
-    JUICE("juice.jpg", 0.56f), LETTUCE("lettuce.jpg",0.56f);
+    private int idOfProduct;
+    private String productName;
+    private int productCost;
 
-    //price and image name
-    private String imageFile;
-    private float price;
-
-    Product(String imageFile, float price) {
-        this.imageFile = imageFile;
-        this.price = price;
+    public Product(int idOfProduct, String productName, int productCost) {
+        this.idOfProduct = idOfProduct;
+        this.productName = productName;
+        this.productCost = productCost;
     }
 
-    public String getImageFile() {
-        return imageFile;
+    public int getIdOfProduct() {
+        return idOfProduct;
     }
 
-    public float getPrice() {
-        return price;
+    public String getProductName() {
+        return productName;
+    }
+
+    public int getProductCost() {
+        return productCost;
     }
 }
