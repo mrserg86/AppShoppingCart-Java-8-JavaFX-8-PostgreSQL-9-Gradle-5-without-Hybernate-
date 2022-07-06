@@ -25,16 +25,16 @@ public class HomeController {
         productGridPane.getChildren().clear();
 
         //for(Product product : persistenceHandler.getProducts()) {
-            VBox productView1 = productView(persistenceHandler.getProducts().get(1));
+            VBox productView1 = productView(persistenceHandler.getProducts().get(0));
             productGridPane.add(productView1, 0, 0);
 
-            VBox productView2 = productView(persistenceHandler.getProducts().get(2));
+            VBox productView2 = productView(persistenceHandler.getProducts().get(1));
             productGridPane.add(productView2, 1, 0);
 
-            VBox productView3 = productView(persistenceHandler.getProducts().get(3));
+            VBox productView3 = productView(persistenceHandler.getProducts().get(2));
             productGridPane.add(productView3, 2, 0);
 
-            VBox productView4 = productView(persistenceHandler.getProducts().get(4));
+            VBox productView4 = productView(persistenceHandler.getProducts().get(3));
             productGridPane.add(productView4, 0, 1);
         //}
     }

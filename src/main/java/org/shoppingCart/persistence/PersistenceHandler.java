@@ -45,7 +45,7 @@ public class PersistenceHandler implements IPersistenceHandler {
     @Override
     public List<Product> getProducts() {
         try {
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM goods");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM cashtest.goods");
             ResultSet sqlReturnValues = stmt.executeQuery();
 
             List<Product> returnValues = new ArrayList<>();
