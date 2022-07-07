@@ -5,10 +5,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.shoppingCart.AppController">
     <children>
-        <AnchorPane fx:id="root" minHeight="800.0" minWidth="600.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+        <AnchorPane fx:id="root" minHeight="400.0" minWidth="600.0" prefHeight="450.0" prefWidth="600.0" AnchorPane.bottomAnchor="161.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
             <children>
                 <BorderPane fx:id="body" styleClass="body" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                     <left>
@@ -39,7 +40,7 @@
                             <content>
                                 <BorderPane fx:id="contentPane">
                                     <center>
-                                        <VBox fx:id="componentBox" BorderPane.alignment="CENTER" />
+                                        <VBox fx:id="componentBox" cache="true" prefHeight="441.0" prefWidth="529.0" BorderPane.alignment="CENTER" />
                                     </center>
                                 </BorderPane>
                             </content>
@@ -52,6 +53,31 @@
                 <Pane fx:id="handPaneMac" prefHeight="14.0" AnchorPane.leftAnchor="69.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
             </children>
         </AnchorPane>
+      <AnchorPane layoutX="5.0" layoutY="459.0" prefHeight="152.0" prefWidth="600.0" style="-fx-background-color: #ffff00;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="459.0">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+         <children>
+            <Button layoutX="428.0" layoutY="68.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="109.0" style="-fx-background-color: #ff99cc;" text="Pay">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <effect>
+                  <Lighting bumpInput="$null">
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </Button>
+         </children></AnchorPane>
     </children>
     <effect>
         <DropShadow blurType="GAUSSIAN" />

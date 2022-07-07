@@ -19,7 +19,7 @@ public class CartController {
     private Label totalPriceLabel;
 
     @FXML
-    public void initialize() {              // заполняет вид
+    public void initialize() {
         List<CartEntry> entries = ShoppingCart.getInstance().getEntries();
         cartPane.getChildren().clear();
 
