@@ -1,5 +1,7 @@
 package org.shoppingCart.persistence;
 
+import org.shoppingCart.cart.ShoppingCart;
+import org.shoppingCart.checks.Check;
 import org.shoppingCart.home.IPersistenceHandler;
 import org.shoppingCart.home.Product;
 
@@ -61,15 +63,18 @@ public class PersistenceHandler implements IPersistenceHandler {
     }
 
     @Override
-    public boolean createProduct(Product product) {
+    public boolean createCheck(Check check) {
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
-                    "INSERT INTO goods (idOfProduct, productName, productCost) VALUES (?,?,?);");
-            insertStatement.setInt(1, product.getIdOfProduct());
-            insertStatement.setString(2, product.getProductName());
-            insertStatement.setInt(3, product.getProductCost());
+                    "INSERT INTO cashtest.checks (idOfCheck, date, time, Summ) VALUES (?,?,?,?)");
+            insertStatement.setInt(1, check.getIdOfCheck());
+            insertStatement.setDate(2, Date.valueOf(check.getDate()));
+            insertStatement.setTime(3, Time.valueOf(check.getTime()));
+            insertStatement.setInt(4, check.getSumm());
 
-            insertStatement.execute();
+            try {
+                insertStatement.execute();
+            } catch()
         } catch (SQLException throwable) {
             throwable.printStackTrace();
             return false;

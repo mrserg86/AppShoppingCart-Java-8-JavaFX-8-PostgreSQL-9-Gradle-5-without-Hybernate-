@@ -65,7 +65,7 @@
             </Lighting>
          </effect>
          <children>
-            <Button layoutX="428.0" layoutY="68.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="109.0" style="-fx-background-color: #ff99cc;" text="Pay">
+            <Button layoutX="428.0" layoutY="68.0" mnemonicParsing="false" onMouseClicked="#showPayView" prefHeight="48.0" prefWidth="109.0" style="-fx-background-color: #ff99cc;" text="Pay">
                <font>
                   <Font size="18.0" />
                </font>

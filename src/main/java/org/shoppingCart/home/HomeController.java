@@ -56,7 +56,7 @@ public class HomeController {
                 Node sourceComponent = (Node)actionEvent.getSource();
                 String productName = (String)sourceComponent.getUserData();
                 ShoppingCart shoppingCart = ShoppingCart.getInstance();
-                shoppingCart.addProduct(product.getIdOfProduct(),product.getProductName(),product.getProductCost());
+                shoppingCart.addProduct(product.getIdOfProduct(),product.getProductName(), product.getProductCost());
             }
         });
 

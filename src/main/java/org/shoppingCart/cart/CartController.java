@@ -60,6 +60,11 @@ public class CartController {
         return layout;
     }
 
+    private HBox totalViewByLine(int totalPrice) {
+
+        return null;
+    }
+
     private HBox cartEntryView(CartEntry cartEntry) {
         HBox layout = new HBox();
         layout.setAlignment(Pos.CENTER_LEFT);
@@ -91,10 +96,13 @@ public class CartController {
         minusButton.setUserData(cartEntry.getProduct().getProductName());
         minusButton.setOnAction( e -> {
             String name = (String) ((Node) e.getSource()).getUserData();
+
             ShoppingCart.getInstance().removeProduct(cartEntry.getProduct().getIdOfProduct(),   //
                     cartEntry.getProduct().getProductName(), cartEntry.getProduct().getProductCost());
+
             quantity.setText(String.valueOf(ShoppingCart.getInstance().getQuantity(cartEntry.getProduct().getIdOfProduct(),   //
                     cartEntry.getProduct().getProductName(), cartEntry.getProduct().getProductCost())));
+
             this.totalPriceLabel.setText(String.valueOf(ShoppingCart.getInstance().calculateTotal()));
         });
 
