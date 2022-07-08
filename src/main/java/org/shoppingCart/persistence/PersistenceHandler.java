@@ -72,11 +72,9 @@ public class PersistenceHandler implements IPersistenceHandler {
             insertStatement.setTime(3, Time.valueOf(check.getTime()));
             insertStatement.setInt(4, check.getSumm());
 
-            try {
-                insertStatement.execute();
-            } catch()
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
+            insertStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
             return false;
         }
         return true;

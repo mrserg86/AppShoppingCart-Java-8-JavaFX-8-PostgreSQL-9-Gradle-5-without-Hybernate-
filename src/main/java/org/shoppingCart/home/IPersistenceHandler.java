@@ -10,4 +10,5 @@ public interface IPersistenceHandler {
     public List<Product> getProducts() ;
 
     boolean createCheck(Check check);
+
 }
