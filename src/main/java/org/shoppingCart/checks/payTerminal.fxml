@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.shoppingCart.checks.PayTerminalController">
+   <children>
+      <DialogPane headerText="Insert payable amount" layoutX="111.0" layoutY="79.0" prefHeight="86.0" prefWidth="365.0">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <MotionBlur />
+               </bumpInput>
+               <light>
+                  <Light.Distant>
+                     <color>
+                        <Color green="0.9599999785423279" blue="0.9563165307044983" />
+                     </color></Light.Distant>
+               </light>
+            </Lighting>
+         </effect></DialogPane>
+      <Button layoutX="356.0" layoutY="128.0" mnemonicParsing="false" onMouseClicked="#checkRecording" prefHeight="25.0" prefWidth="112.0" text="Pay">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="payableAmount" layoutX="270.0" layoutY="79.0" prefHeight="30.0" prefWidth="198.0" promptText="payable amount" />
+   </children>
+</AnchorPane>
