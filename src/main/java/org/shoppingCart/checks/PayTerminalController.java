@@ -22,15 +22,15 @@ public class PayTerminalController {
         @FXML
         public void checkRecording(MouseEvent mouseEvent) {
             try {
-                Check check = new Check(null, LocalDate.now(), LocalTime.now(), parseInt(payableAmount.getText()));//changed signature of LocalDate.now(), LocalTime.now()
+                Check check = new Check(-1, LocalDate.now(), LocalTime.now(), parseInt(payableAmount.getText()));//changed signature of LocalDate.now(), LocalTime.now()
                 if (persistenceHandler.createCheck(check)) {
                     System.out.println("Check inserted into database");
                     payableAmount.clear();
                 } else {
                     System.out.println("Something went wrong");
                 }
-            } catch (NullPointerException nullPointerException) {
-                System.out.println(nullPointerException.getCause());
+            } catch (NullPointerException e) {
+                e.printStackTrace();
             }
         }
 }

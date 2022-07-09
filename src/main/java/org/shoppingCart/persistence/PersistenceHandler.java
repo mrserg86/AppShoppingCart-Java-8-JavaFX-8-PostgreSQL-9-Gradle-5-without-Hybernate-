@@ -33,7 +33,7 @@ public class PersistenceHandler implements IPersistenceHandler {
     private void initializePostgresqlDatabase() {
         try {
             DriverManager.registerDriver(new org.postgresql.Driver());
-            connection = DriverManager.getConnection("jdbc:postgresql://" + url + ":" + port + "/" + databaseName, username, password);
+            connection = DriverManager.getConnection("jdbc:postgresql://" + url + ":" + port + "/" + databaseName + "?useUnicode=yes&characterEncoding=UTF-8", username, password);
             System.out.println("DB connected");
         } catch (SQLException | IllegalArgumentException ex) {
             ex.printStackTrace(System.err);
@@ -66,15 +66,16 @@ public class PersistenceHandler implements IPersistenceHandler {
     public boolean createCheck(Check check) {
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
-                    "INSERT INTO cashtest.checks (idOfCheck, date, time, Summ) VALUES (?,?,?,?)");
-            insertStatement.setInt(1, check.getIdOfCheck());
-            insertStatement.setDate(2, Date.valueOf(check.getDate()));
-            insertStatement.setTime(3, Time.valueOf(check.getTime()));
-            insertStatement.setInt(4, check.getSumm());
+                    "INSERT INTO cashtest.checks (date, time, \"Summ\") VALUES (?,?,?)");
 
-            insertStatement.executeUpdate();
+            System.out.println("Summ: " + check.getSumm());
+            insertStatement.setDate(1, Date.valueOf(check.getDate()));
+            insertStatement.setTime(2, Time.valueOf(check.getTime()));
+            insertStatement.setInt(3, check.getSumm());
+
+            insertStatement.execute();
         } catch (SQLException e) {
-            System.out.println(e);
+            e.printStackTrace();
             return false;
         }
         return true;
