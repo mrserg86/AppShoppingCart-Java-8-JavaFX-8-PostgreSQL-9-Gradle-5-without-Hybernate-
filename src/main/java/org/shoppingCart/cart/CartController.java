@@ -97,8 +97,7 @@ public class CartController {
         minusButton.setOnAction( e -> {
             String name = (String) ((Node) e.getSource()).getUserData();
 
-            ShoppingCart.getInstance().removeProduct(cartEntry.getProduct().getIdOfProduct(),   //
-                    cartEntry.getProduct().getProductName(), cartEntry.getProduct().getProductCost());
+            ShoppingCart.getInstance().removeProduct(cartEntry.getProduct().getProductName());
 
             quantity.setText(String.valueOf(ShoppingCart.getInstance().getQuantity(cartEntry.getProduct().getIdOfProduct(),   //
                     cartEntry.getProduct().getProductName(), cartEntry.getProduct().getProductCost())));

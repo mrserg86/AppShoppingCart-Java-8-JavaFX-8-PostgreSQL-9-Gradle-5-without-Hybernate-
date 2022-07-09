@@ -1,8 +1,7 @@
 package org.shoppingCart.persistence;
 
-import org.shoppingCart.cart.ShoppingCart;
 import org.shoppingCart.checks.Check;
-import org.shoppingCart.home.IPersistenceHandler;
+import org.shoppingCart.home.IPersistentHandler;
 import org.shoppingCart.home.Product;
 
 import java.sql.*;
@@ -10,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PersistenceHandler implements IPersistenceHandler {
-    private static PersistenceHandler instance;
+public class PersistentHandler implements IPersistentHandler {
+    private static PersistentHandler instance;
     private String url = "localhost";
     private int port = 5432;
     private String databaseName = "blogg_db";
@@ -19,13 +18,13 @@ public class PersistenceHandler implements IPersistenceHandler {
     private String password = "l275";
     private Connection connection = null;
 
-    private PersistenceHandler() {
+    private PersistentHandler() {
         initializePostgresqlDatabase();
     }
 
-    public static PersistenceHandler getInstance() {
+    public static PersistentHandler getInstance() {
         if (instance == null) {
-            instance = new PersistenceHandler();
+            instance = new PersistentHandler();
         }
         return instance;
     }

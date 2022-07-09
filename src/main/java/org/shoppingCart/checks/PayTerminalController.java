@@ -3,18 +3,17 @@ package org.shoppingCart.checks;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import org.shoppingCart.home.IPersistenceHandler;
-import org.shoppingCart.persistence.PersistenceHandler;
-import org.postgresql.util.PSQLException;
+import org.shoppingCart.home.IPersistentHandler;
+import org.shoppingCart.persistence.PersistentHandler;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.io.IOException;
 
 import static java.lang.Integer.parseInt;
 
 public class PayTerminalController {
 
-        IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
+        IPersistentHandler persistenceHandler = PersistentHandler.getInstance();
 
         @FXML
         private TextField payableAmount;

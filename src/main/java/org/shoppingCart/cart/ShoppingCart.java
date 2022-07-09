@@ -35,7 +35,7 @@ public class ShoppingCart {
         }
     }
 
-    public void removeProduct(int idOfProduct, String productName, int productCost) {
+    public void removeProduct(String productName) {
         CartEntry productEntry = entries.get(productName);
         if (productEntry != null) {
             productEntry.decreaseQuantity();

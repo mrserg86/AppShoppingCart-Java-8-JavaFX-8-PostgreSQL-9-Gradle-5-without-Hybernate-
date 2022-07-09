@@ -27,6 +27,6 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="payableAmount" layoutX="270.0" layoutY="79.0" prefHeight="30.0" prefWidth="198.0" promptText="payable amount" />
+      <TextField fx:id="payableAmount" layoutX="270.0" layoutY="86.0" prefHeight="30.0" prefWidth="198.0" promptText="payable amount" />
    </children>
 </AnchorPane>

@@ -5,7 +5,7 @@ import org.shoppingCart.checks.Check;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-public interface IPersistenceHandler {
+public interface IPersistentHandler {
 
     public List<Product> getProducts() ;
 
