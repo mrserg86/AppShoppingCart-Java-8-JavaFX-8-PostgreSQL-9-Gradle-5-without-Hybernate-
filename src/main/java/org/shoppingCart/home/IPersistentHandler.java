@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IPersistentHandler {
 
-    public List<Product> getProducts() ;
+    public List<Product> getProducts(String text) ;
 
     boolean createCheck(Check check);
 

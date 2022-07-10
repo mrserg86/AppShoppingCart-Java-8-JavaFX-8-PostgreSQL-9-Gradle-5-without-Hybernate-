@@ -35,7 +35,7 @@ public class HomeController {
         productName.textProperty().addListener((observable, oldValue, newValue) -> {
             refreshProducts();
         });
-
+        refreshProducts();
 
     }
 

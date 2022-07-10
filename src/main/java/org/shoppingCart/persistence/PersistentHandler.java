@@ -44,9 +44,14 @@ public class PersistentHandler implements IPersistentHandler {
     }
 
     @Override
-    public List<Product> getProducts() {
+    public List<Product> getProducts(String filter) {
+        filter = filter == null ? null : filter.trim().toLowerCase();
         try {
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM cashtest.goods");
+            String query = "SELECT * FROM cashtest.goods";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            if (filter!= null && !filter.isEmpty()) {
+                stmt = connection.prepareStatement("SELECT * FROM cashtest.goods");
+            }
             ResultSet sqlReturnValues = stmt.executeQuery();
 
             List<Product> returnValues = new ArrayList<>();
