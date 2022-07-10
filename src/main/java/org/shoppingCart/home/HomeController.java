@@ -49,12 +49,12 @@ public class HomeController {
         VBox layout = new VBox();
         layout.setAlignment(Pos.CENTER);
 
-        Label idOfPr = new Label(String.valueOf(product.getIdOfProduct()));
-        Label productName = new Label(product.getProductName());
-        Label cost = new Label(product.getProductCost() + " $");
+        Label idOfPr = new Label(String.valueOf(product.getId()));
+        Label productName = new Label(product.getName());
+        Label cost = new Label(product.getCost() + " $");
 
         Button addButton = new Button("Add to cart");
-        addButton.setUserData(product.getProductName());
+        addButton.setUserData(product.getName());
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -62,7 +62,7 @@ public class HomeController {
                 Node sourceComponent = (Node) actionEvent.getSource();
                 String productName = (String) sourceComponent.getUserData();
                 ShoppingCart shoppingCart = ShoppingCart.getInstance();
-                shoppingCart.addProduct(product.getIdOfProduct(), product.getProductName(), product.getProductCost());
+                shoppingCart.addProduct(product.getId(), product.getName(), product.getCost());
             }
         });
 

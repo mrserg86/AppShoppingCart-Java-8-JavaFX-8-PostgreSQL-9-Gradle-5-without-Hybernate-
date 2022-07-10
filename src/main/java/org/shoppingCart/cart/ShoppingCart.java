@@ -53,7 +53,7 @@ public class ShoppingCart {
     public int calculateTotal() {
         int total = 0;
         for(CartEntry entry : entries.values()) {
-            int entryCost = entry.getProduct().getProductCost()*entry.getQuantity();
+            int entryCost = entry.getProduct().getCost()*entry.getQuantity();
             total = total + entryCost;
         }
         return total;

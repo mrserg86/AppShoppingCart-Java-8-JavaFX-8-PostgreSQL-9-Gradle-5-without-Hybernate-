@@ -32,7 +32,7 @@ public class CartController {
 
             for(CartEntry cartEntry : entries) {
                 HBox hBox = new HBox();
-                Label productName = new Label(cartEntry.getProduct().getProductName());
+                Label productName = new Label(cartEntry.getProduct().getName());
                 hBox.getChildren().add(productName);
                 HBox productView = cartEntryView(cartEntry);    //получаем layout для CartEntry
                 cartPane.getChildren().add(productView);        //передаём в поле --> в cart.fxml на отображение
@@ -69,7 +69,7 @@ public class CartController {
         HBox layout = new HBox();
         layout.setAlignment(Pos.CENTER_LEFT);
 
-        Label productName = new Label(cartEntry.getProduct().getProductName());
+        Label productName = new Label(cartEntry.getProduct().getName());
         productName.setPrefWidth(100);
         productName.setStyle("-fx-font-size:15pt; -fx-padding:5px");
 
@@ -78,34 +78,34 @@ public class CartController {
 
         Button plusButton = new Button("+");
         plusButton.setStyle("-fx-padding:5px");
-        plusButton.setUserData(cartEntry.getProduct().getProductName());
+        plusButton.setUserData(cartEntry.getProduct().getName());
         plusButton.setOnAction( e -> {
             String name = (String) ((Node) e.getSource()).getUserData();
 
-            ShoppingCart.getInstance().addProduct(cartEntry.getProduct().getIdOfProduct(),      //
-                    cartEntry.getProduct().getProductName(), cartEntry.getProduct().getProductCost());
+            ShoppingCart.getInstance().addProduct(cartEntry.getProduct().getId(),      //
+                    cartEntry.getProduct().getName(), cartEntry.getProduct().getCost());
 
-            quantity.setText(String.valueOf(ShoppingCart.getInstance().getQuantity(cartEntry.getProduct().getIdOfProduct(),
-                    cartEntry.getProduct().getProductName(), cartEntry.getProduct().getProductCost())));
+            quantity.setText(String.valueOf(ShoppingCart.getInstance().getQuantity(cartEntry.getProduct().getId(),
+                    cartEntry.getProduct().getName(), cartEntry.getProduct().getCost())));
 
             this.totalPriceLabel.setText(String.valueOf(ShoppingCart.getInstance().calculateTotal()));
         });
 
         Button minusButton = new Button("-");
         minusButton.setStyle("-fx-padding:5px");
-        minusButton.setUserData(cartEntry.getProduct().getProductName());
+        minusButton.setUserData(cartEntry.getProduct().getName());
         minusButton.setOnAction( e -> {
             String name = (String) ((Node) e.getSource()).getUserData();
 
-            ShoppingCart.getInstance().removeProduct(cartEntry.getProduct().getProductName());
+            ShoppingCart.getInstance().removeProduct(cartEntry.getProduct().getName());
 
-            quantity.setText(String.valueOf(ShoppingCart.getInstance().getQuantity(cartEntry.getProduct().getIdOfProduct(),   //
-                    cartEntry.getProduct().getProductName(), cartEntry.getProduct().getProductCost())));
+            quantity.setText(String.valueOf(ShoppingCart.getInstance().getQuantity(cartEntry.getProduct().getId(),   //
+                    cartEntry.getProduct().getName(), cartEntry.getProduct().getCost())));
 
             this.totalPriceLabel.setText(String.valueOf(ShoppingCart.getInstance().calculateTotal()));
         });
 
-        Label price = new Label(String.valueOf("$ " + cartEntry.getProduct().getProductCost()));
+        Label price = new Label(String.valueOf("$ " + cartEntry.getProduct().getCost()));
         price.setStyle("-fx-padding:5px");
 
         layout.getChildren().addAll(productName,plusButton,quantity,price,minusButton);

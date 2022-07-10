@@ -2,25 +2,25 @@ package org.shoppingCart.home;
 
 public class Product {
 
-    private int idOfProduct;
-    private String productName;
-    private int productCost;
+    private int id;
+    private String name;
+    private int cost;
 
-    public Product(int idOfProduct, String productName, int productCost) {
-        this.idOfProduct = idOfProduct;
-        this.productName = productName;
-        this.productCost = productCost;
+    public Product(int id, String name, int cost) {
+        this.id = id;
+        this.name = name;
+        this.cost = cost;
     }
 
-    public int getIdOfProduct() {
-        return idOfProduct;
+    public int getId() {
+        return id;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public int getProductCost() {
-        return productCost;
+    public int getCost() {
+        return cost;
     }
 }
