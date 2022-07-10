@@ -48,12 +48,12 @@ public class PersistentHandler implements IPersistentHandler {
         filter = filter == null ? null : filter.trim().toLowerCase();
         try {
             String query = "SELECT * FROM cashtest.goods";
-            PreparedStatement stmt = connection.prepareStatement(query);
+
             if (filter!= null && !filter.isEmpty()) {
                 query += " WHERE \"productName\" LIKE '" + filter + "%'";
             }
             System.out.println(query);
-            stmt = connection.prepareStatement(query);
+            PreparedStatement stmt = connection.prepareStatement(query);
             ResultSet sqlReturnValues = stmt.executeQuery();
 
             List<Product> returnValues = new ArrayList<>();
