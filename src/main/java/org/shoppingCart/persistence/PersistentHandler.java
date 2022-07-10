@@ -50,8 +50,9 @@ public class PersistentHandler implements IPersistentHandler {
             String query = "SELECT * FROM cashtest.goods";
             PreparedStatement stmt = connection.prepareStatement(query);
             if (filter!= null && !filter.isEmpty()) {
-                query += " WHERE productName LIKE '" + filter + "%'";
+                query += " WHERE \"productName\" LIKE '" + filter + "%'";
             }
+            System.out.println(query);
             stmt = connection.prepareStatement(query);
             ResultSet sqlReturnValues = stmt.executeQuery();
 
