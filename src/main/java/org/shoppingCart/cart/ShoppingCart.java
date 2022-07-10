@@ -25,7 +25,7 @@ public class ShoppingCart {
     }
 
     public void addProduct(int idOfProduct, String productName, int productCost) {
-        CartEntry productEntry = entries.get(productName);  //не по id, т.к. id нулом не может быть, а далее в if проверка по нулу
+        CartEntry productEntry = entries.get(productName);
         if(productEntry!=null) {
             productEntry.increaseQuantity();
         } else {
