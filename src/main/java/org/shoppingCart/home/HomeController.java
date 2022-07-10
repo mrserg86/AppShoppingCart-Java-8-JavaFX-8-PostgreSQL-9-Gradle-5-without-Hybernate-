@@ -1,6 +1,9 @@
 package org.shoppingCart.home;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,7 +23,7 @@ public class HomeController {
 
     IPersistentHandler persistenceHandler = PersistentHandler.getInstance();
 
-    FilteredList<Product> filteredList;
+    private ObservableList<Product> masterData = FXCollections.observableArrayList();
 
     @FXML
     private TextField productName;
@@ -32,9 +35,7 @@ public class HomeController {
     public void initialize() {
         productGridPane.getChildren().clear();
 
-        List<Product> productList = persistenceHandler.getProducts();
-
-
+//        List<Product> productList = persistenceHandler.getProducts();
 //            for (int i = 0; i < productList.size(); i++) {
 //                Product product = productList.get(i);
 //                VBox productView = productView(product);
@@ -55,6 +56,7 @@ public class HomeController {
 
             VBox productView5 = productView(persistenceHandler.getProducts().get(4));
             productGridPane.add(productView5, 4, 0);
+
     }
 
     private VBox productView(Product product) {
@@ -85,13 +87,36 @@ public class HomeController {
     }
 
     private void updatePredicate() {
-        filteredList.setPredicate((data) -> {
-            boolean showItem = true;
-            if (!productName.getText().isEmpty()) {
-                showItem = showItem && (data.getField1().contains(textfield1.getText()));
-            }
-            return showItem;
+        FilteredList<Product> filteredList = new FilteredList<>(masterData, p -> true);
+        masterData.addAll(persistenceHandler.getProducts());
+//        filteredList.setPredicate((data) -> {
+//            boolean showItem = true;
+//            if (!productName.getText().isEmpty()) {
+//                showItem = showItem && (data.getProductName().contains(productName.getText()));
+//            }
+//            return showItem;
+//        });
+
+        productName.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredList.setPredicate(product -> {
+                // If filter text is empty, display all products
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                // Compare product name of every product with filter text
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (product.getProductName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches product name.
+                }
+                return false; // Does not match.
+            });
         });
+
+            //Wrap the FilteredList in a SortedList.
+        SortedList<Product> sortedData = new SortedList<>(filteredList);
+
+        sortedData.comparatorProperty().bind(productGridPane.add);
+
     }
 
 }

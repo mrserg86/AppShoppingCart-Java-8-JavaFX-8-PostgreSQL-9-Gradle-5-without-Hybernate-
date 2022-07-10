@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<VBox prefHeight="400.0" prefWidth="600.0"
-      xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.shoppingCart.home.HomeController">
-    <GridPane fx:id="productGridPane" >
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.shoppingCart.home.HomeController">
+   <AnchorPane>
+      <children>
+         <TextField fx:id="productName" layoutX="251.0" prefHeight="38.0" prefWidth="286.0" promptText="Enter product name" style="-fx-background-color: #ffffcc;">
+            <font>
+               <Font size="18.0" />
+            </font></TextField>
+         <Label layoutX="53.0" layoutY="1.0" prefHeight="38.0" prefWidth="183.0" style="-fx-background-color: #ccffff;" text="Enter product name:">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+      </children></AnchorPane>
+    <GridPane fx:id="productGridPane" alignment="CENTER" layoutX="100.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="104.0" prefWidth="600.0" translateY="100.0">
         <padding>
-            <Insets top="25" right="25" bottom="25" left="25"/>
+            <Insets bottom="25" left="25" right="25" top="25" />
         </padding>
+      <rotationAxis>
+         <Point3D />
+      </rotationAxis>
     </GridPane>
 </VBox>
