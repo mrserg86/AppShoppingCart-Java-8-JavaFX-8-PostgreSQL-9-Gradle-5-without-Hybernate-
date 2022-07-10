@@ -33,31 +33,33 @@ public class HomeController {
     public void initialize() {
         productGridPane.getChildren().clear();
 
-            VBox productView1 = productView(persistenceHandler.getProducts().get(0));
-            productGridPane.add(productView1, 0, 0);
+        List<Product> productList = persistenceHandler.getProducts();
+        for( int i = 0; i < productList.size(); i++)
+            for (int j = 0; j < productList.size(); j++) {
+                Product product = productList.get(i);
+                VBox productView = productView(product);
+                productGridPane.add(productView,j,i);
+            }
 
-            VBox productView2 = productView(persistenceHandler.getProducts().get(1));
-            productGridPane.add(productView2, 1, 0);
+//            VBox productView1 = productView(persistenceHandler.getProducts().get(0));
+//            productGridPane.add(productView1, 0, 0);
+//
+//            VBox productView2 = productView(persistenceHandler.getProducts().get(1));
+//            productGridPane.add(productView2, 1, 0);
+//
+//            VBox productView3 = productView(persistenceHandler.getProducts().get(2));
+//            productGridPane.add(productView3, 2, 0);
+//
+//            VBox productView4 = productView(persistenceHandler.getProducts().get(3));
+//            productGridPane.add(productView4, 3, 0);
+//
+//            VBox productView5 = productView(persistenceHandler.getProducts().get(4));
+//            productGridPane.add(productView5, 4, 0);
 
-            VBox productView3 = productView(persistenceHandler.getProducts().get(2));
-            productGridPane.add(productView3, 2, 0);
-
-            VBox productView4 = productView(persistenceHandler.getProducts().get(3));
-            productGridPane.add(productView4, 3, 0);
-
-            VBox productView5 = productView(persistenceHandler.getProducts().get(4));
-            productGridPane.add(productView5, 4, 0);
 
             productName.textProperty().addListener((observable, oldValue, newValue) -> {
-                filteredList.setPredicate(product -> {
-                    // If filter text is empty, display all products
-                    if (newValue == null || newValue.isEmpty()) {
-                        return true;
-                    }
-                    return false; // Does not match.
-                });
             });
-            persistenceHandler.getProducts().
+
 
     }
 
