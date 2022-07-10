@@ -23,8 +23,6 @@ public class HomeController {
 
     IPersistentHandler persistenceHandler = PersistentHandler.getInstance();
 
-    private ObservableList<Product> masterData = FXCollections.observableArrayList();
-
     @FXML
     private TextField productName;
 
@@ -57,6 +55,22 @@ public class HomeController {
             VBox productView5 = productView(persistenceHandler.getProducts().get(4));
             productGridPane.add(productView5, 4, 0);
 
+            productName.textProperty().addListener((observable, oldValue, newValue) -> {
+                filteredList.setPredicate(product -> {
+                    // If filter text is empty, display all products
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    // Compare product name of every product with filter text
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    if (product.getProductName().toLowerCase().contains(lowerCaseFilter)) {
+                        return true; // Filter matches product name.
+                    }
+                    return false; // Does not match.
+                });
+            });
+            persistenceHandler.getProducts().
+
     }
 
     private VBox productView(Product product) {
@@ -83,39 +97,6 @@ public class HomeController {
         layout.getChildren().addAll(idOfPr,productName,cost,addButton);
 
         return layout;
-
-    }
-
-    private void updatePredicate() {
-        FilteredList<Product> filteredList = new FilteredList<>(masterData, p -> true);
-        masterData.addAll(persistenceHandler.getProducts());
-//        filteredList.setPredicate((data) -> {
-//            boolean showItem = true;
-//            if (!productName.getText().isEmpty()) {
-//                showItem = showItem && (data.getProductName().contains(productName.getText()));
-//            }
-//            return showItem;
-//        });
-
-        productName.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredList.setPredicate(product -> {
-                // If filter text is empty, display all products
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                // Compare product name of every product with filter text
-                String lowerCaseFilter = newValue.toLowerCase();
-                if (product.getProductName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches product name.
-                }
-                return false; // Does not match.
-            });
-        });
-
-            //Wrap the FilteredList in a SortedList.
-        SortedList<Product> sortedData = new SortedList<>(filteredList);
-
-        sortedData.comparatorProperty().bind(productGridPane.add);
 
     }
 
