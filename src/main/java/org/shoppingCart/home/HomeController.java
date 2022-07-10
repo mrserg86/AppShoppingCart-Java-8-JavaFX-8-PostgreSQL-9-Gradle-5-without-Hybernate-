@@ -34,11 +34,11 @@ public class HomeController {
         productGridPane.getChildren().clear();
 
         List<Product> productList = persistenceHandler.getProducts();
-        for( int i = 0; i < productList.size(); i++)
+        for (int i = 0; i < productList.size(); i++)
             for (int j = 0; j < productList.size(); j++) {
                 Product product = productList.get(i);
                 VBox productView = productView(product);
-                productGridPane.add(productView,j,i);
+                productGridPane.add(productView, j, i);
             }
 
 //            VBox productView1 = productView(persistenceHandler.getProducts().get(0));
@@ -57,8 +57,8 @@ public class HomeController {
 //            productGridPane.add(productView5, 4, 0);
 
 
-            productName.textProperty().addListener((observable, oldValue, newValue) -> {
-            });
+        productName.textProperty().addListener((observable, oldValue, newValue) -> {
+        });
 
 
     }
@@ -73,18 +73,18 @@ public class HomeController {
 
         Button addButton = new Button("Add to cart");
         addButton.setUserData(product.getProductName());
-        addButton.setOnAction (new EventHandler<ActionEvent>() {
+        addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 //add product to shopping cart
-                Node sourceComponent = (Node)actionEvent.getSource();
-                String productName = (String)sourceComponent.getUserData();
+                Node sourceComponent = (Node) actionEvent.getSource();
+                String productName = (String) sourceComponent.getUserData();
                 ShoppingCart shoppingCart = ShoppingCart.getInstance();
-                shoppingCart.addProduct(product.getIdOfProduct(),product.getProductName(), product.getProductCost());
+                shoppingCart.addProduct(product.getIdOfProduct(), product.getProductName(), product.getProductCost());
             }
         });
 
-        layout.getChildren().addAll(idOfPr,productName,cost,addButton);
+        layout.getChildren().addAll(idOfPr, productName, cost, addButton);
 
         return layout;
 
