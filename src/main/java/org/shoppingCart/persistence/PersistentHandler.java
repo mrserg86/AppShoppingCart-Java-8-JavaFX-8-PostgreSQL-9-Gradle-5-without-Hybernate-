@@ -46,6 +46,7 @@ public class PersistentHandler implements IPersistentHandler {
     @Override
     public List<Product> getProducts(String filter) {
         filter = filter == null ? null : filter.trim().toLowerCase();
+        List<Product> returnValues = new ArrayList<>();
         try {
             String query = "SELECT * FROM cashtest.goods";
 
@@ -56,16 +57,14 @@ public class PersistentHandler implements IPersistentHandler {
             PreparedStatement stmt = connection.prepareStatement(query);
             ResultSet sqlReturnValues = stmt.executeQuery();
 
-            List<Product> returnValues = new ArrayList<>();
-
             while (sqlReturnValues.next()) {
                 returnValues.add(new Product(sqlReturnValues.getInt(1), sqlReturnValues.getString(2), sqlReturnValues.getInt(3)));
             }
-            return returnValues;
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return null;
+        return returnValues;
     }
 
     @Override
