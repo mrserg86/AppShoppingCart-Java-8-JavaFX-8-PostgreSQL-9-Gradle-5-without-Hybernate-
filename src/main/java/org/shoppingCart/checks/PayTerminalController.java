@@ -22,7 +22,6 @@ public class PayTerminalController {
 
     @FXML
     public void checkRecording(MouseEvent mouseEvent) {
-
         if (parseInt(payableAmount.getText()) == ShoppingCart.getInstance().calculateTotal()){
             try {
                 Check check = new Check(-1, LocalDate.now(), LocalTime.now(), parseInt(payableAmount.getText()));//changed signature of LocalDate.now(), LocalTime.now()
