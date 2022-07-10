@@ -33,13 +33,6 @@ public class HomeController {
     public void initialize() {
         productGridPane.getChildren().clear();
 
-//        List<Product> productList = persistenceHandler.getProducts();
-//            for (int i = 0; i < productList.size(); i++) {
-//                Product product = productList.get(i);
-//                VBox productView = productView(product);
-//                productGridPane.add(productView,0,i);
-//            }
-
             VBox productView1 = productView(persistenceHandler.getProducts().get(0));
             productGridPane.add(productView1, 0, 0);
 
@@ -60,11 +53,6 @@ public class HomeController {
                     // If filter text is empty, display all products
                     if (newValue == null || newValue.isEmpty()) {
                         return true;
-                    }
-                    // Compare product name of every product with filter text
-                    String lowerCaseFilter = newValue.toLowerCase();
-                    if (product.getProductName().toLowerCase().contains(lowerCaseFilter)) {
-                        return true; // Filter matches product name.
                     }
                     return false; // Does not match.
                 });
