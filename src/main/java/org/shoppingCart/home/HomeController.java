@@ -42,7 +42,7 @@ public class HomeController {
     public void refreshProducts() {
         productGridPane.getChildren().clear();
     List<Product> productList = persistenceHandler.getProducts(productName.getText());
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < productList.size(); i++) {
             Product product = productList.get(i);
             VBox productView = productView(product);
             productGridPane.add(productView, i, 0);
